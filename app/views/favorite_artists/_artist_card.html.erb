@@ -1,0 +1,19 @@
+<div class="card w-96 bg-secondary shadow-xl">
+  <div class="card-actions justify-end px-2 pt-2">
+    <%= render "delete_button", artist_id: artist_id %>
+  </div>  
+  <figure class="px-10 pt-3">
+    <% artists = RSpotify::Artist.find(artist_id) %>
+    <% if artists.images.present? %>
+      <% image = artists.images.first %>
+      <img src="<%= image['url'] %>?size=320x320" alt="Artists Artwork" class="rounded-xl" style="width: 300px; height: 300px;" />
+    <% else %>
+      <img src="<%= image_path('20200501_noimage.png') %>" alt="Artists Artwork" class="rounded-xl" style="width: 300px; height: 300px;" />
+    <% end %>
+  </figure>
+  <div class="card-body items-center text-center">
+    <h2 class="card-title">
+      <%= Artist.find_by(spotify_id: artist_id).name %>
+    </h2>
+  </div>
+</div>

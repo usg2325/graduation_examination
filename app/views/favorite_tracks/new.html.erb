@@ -1,0 +1,17 @@
+<div class="flex justify-between px-20 py-10">
+  <h1 class="text-3xl font-bold font-body "><%= "お気に入り楽曲登録" %></h1>
+  <div class="pr-10">
+    <%= link_to "← 一覧に戻る", favorite_tracks_path, class: "btn btn-outline btn-accent rounded-full" %>
+  </div>
+</div>
+
+<%= render 'search_form' %>
+
+<%= form_with url: favorite_tracks_path, method: :post do |f| %>
+  <%= render 'track_table', f: f %>
+  <%= f.hidden_field :track_name, value: "", name: "favorite_track[track_name]" %>
+  <%= f.hidden_field :artist_name, value: "", name: "favorite_track[artist_name]" %>
+  <div class="flex justify-end pt-10 px-40">
+    <%= f.submit "登録",  class: "btn btn-lg btn-active btn-accent text-indigo-950 hover:bg-base-100 hover:text-accent rounded-full px-10" %>
+  </div>
+<% end %>

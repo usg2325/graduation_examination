@@ -1,0 +1,29 @@
+<!-- 検索結果を表示するテーブル -->
+<div class="flex justify-center">
+    <div class="overflow-y-scroll border border-gray-200 p-4 w-4/5 h-[40vh] pt-0">
+      <table class="table table-pin-rows">
+        <thead>
+          <tr>
+            <th></th>
+            <th>楽曲名</th>
+            <th>アーティスト名</th>
+            <th>収録</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @tracks.present? %>
+            <% @tracks.each do |track| %>
+              <tr class="table-row cursor-pointer hover:bg-base-300">
+                <td class="radio border-none">
+                <%= f.radio_button :track_id, track.id, name: 'favorite_track[track_id]', class: "radio radio-accent", data: { track_name: track.name, artist_name: track.artists.map(&:name).join(', ') } %>
+                </td>
+                <td class="track-name"><%= "#{track.name} " %></td>
+                <td class="track-artist"><%= "#{track.artists.map(&:name).join(', ')}" %></td>
+                <td class="track-album"><%= "#{track.album.name}" %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>

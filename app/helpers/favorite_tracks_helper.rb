@@ -1,0 +1,2 @@
+module FavoriteTracksHelper
+end
