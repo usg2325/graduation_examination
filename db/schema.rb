@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_27_022248) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_30_111024) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_022248) do
     t.index ["user_id"], name: "index_favorite_tracks_on_user_id"
   end
 
+  create_table "playlists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.string "spotify_id", null: false
+    t.date "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.string "name", null: false
     t.string "spotify_id", null: false
@@ -65,5 +75,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_022248) do
   add_foreign_key "favorite_artists", "users"
   add_foreign_key "favorite_tracks", "tracks"
   add_foreign_key "favorite_tracks", "users"
+  add_foreign_key "playlists", "users"
   add_foreign_key "tracks", "artists"
 end

@@ -5,7 +5,7 @@ class SpotifyController < ApplicationController
   def login
     client_id = ENV['SPOTIFY_CLIENT_ID']
     redirect_url = callback_url
-    scope = 'playlist-modify-private'
+    scope = 'playlist-modify-private  user-read-private'
     spotify_url ="https://accounts.spotify.com/authorize?client_id=#{client_id}&response_type=code&redirect_uri=#{redirect_url}&scope=#{scope}"
 
     # 外部ホストへのリダイレクを許可するオプションを使用

@@ -13,9 +13,9 @@
     <% end %>
   </figure>
   <div class="card-body items-center text-center">
-    <h2 class="card-title">  
+    <h2 class="card-title text-indigo-950">  
       <%= Track.find_by(spotify_id: track_id).name %>
     </h2>
-    <p><%= Artist.find_by(id: Track.find_by(spotify_id: track_id).artist).name %></p>
+    <p class="text-indigo-950"><%= Artist.find_by(id: Track.find_by(spotify_id: track_id).artist).name %></p>
   </div>
 </div>

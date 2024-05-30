@@ -1,0 +1,36 @@
+<%= form_with url: create_playlist_artists_path, method: :post do |f| %>
+  <div class="grid grid-cols-2 w-full">
+    <div class="flex w-full justify-center pt-20">
+      <div class="border border-gray-200 w-4/5 ">
+        <div class="card bg-base-200">
+          <div class="card_title text-center py-5">
+            <p><%= '3つまで選択可能' %></p>
+          </div>
+          <div class="card-body pb-2 pt-2 pl-10 ">
+            <% @artist_ids.each_slice(2) do |artist_pair| %>
+              <div class="flex flex-row pt-3">
+                <% artist_pair.each do |artist| %>
+                  <div class="flex flex-col w-1/2">
+                    <div class="form-check flex items-center">
+                      <%= f.check_box :artist_ids, { multiple: true, class: 'checkbox checkbox-accent' }, artist, nil %>
+                      <%= label_tag "artist_ids_#{artist}", Artist.find_by(spotify_id: artist).name, class: "px-2" %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>  
+    </div>
+    <div class="flex flex-col w-full items-center">
+      <div class="form-group py-20 w-2/3">
+        <%= f.label :プレイリスト名 %>
+        <div class='pt-3' %>
+          <%= f.text_field :playlist_name, class: 'form-control input input-bordered input-secondary w-full', placeholder: 'New Playlist' %>
+        </div>
+      </div>
+      <%= f.submit "プレイリスト作成", class: "btn btn-outline btn-info w-1/2" %>
+    </div>
+  </div>
+<% end %>
