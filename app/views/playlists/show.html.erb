@@ -1,0 +1,45 @@
+<div class="w-full">
+  <div class="flex justify-center py-20">
+    <div class="card w-4/5 bg-secondary flex flex-row pt-10">
+      <div class="flex flex-col w-1/3 items-center p-4">
+        <h1 class="text-4xl font-bold"><%= @playlist.name %></h>
+        <figure class="px-5 pt-10">
+          <% playlist = RSpotify::Playlist.find(nil, @playlist.spotify_id) %>
+          <% if playlist.images.any? %>
+            <% image = playlist.images.first %>
+            <img src="<%= image['url'] %>?size=300x300" alt="Playlist Artwork" class="rounded-xl" style="width: 250px; height: 250px;" />
+          <% else %>
+            <img src="<%= image_path('20200501_noimage.png') %>" alt="Playlist Artwork" class="rounded-xl" style="width: 200px; height: 200px;" />
+          <% end %>
+        </figure>
+        <div class="flex justify-center">
+          <p class="text-base"><%= "作成日 : #{@playlist.date}" %></p>
+        </div>
+        <% spotify_url = "https://open.spotify.com/playlist/#{@playlist.spotify_id}" %>
+        <div class="flex justify-center py-10">
+          <%= link_to "Spotifyで聴く", spotify_url, class: "btn btn-accent" %>
+        </div>
+      </div>
+      <div class="w-2/3 p-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>タイトル</th>
+              <th>アーティスト</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @playlist_items.each_with_index do |playlist_item, index| %>
+              <tr class="table-row">
+                <td><%= index+1 %></td>
+                <td><%= playlist_item[0] %></td>
+                <td><%= playlist_item[1] %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,8 @@
-class CreatePlaylistArtistsController < ApplicationController
+class CreatePlaylistGenresController < ApplicationController
   before_action :ensure_spotify_token_valid, only: %i[create]
 
   def index
-    @favorite_artists = FavoriteArtist.where(user: current_user)
-    @artist_ids = @favorite_artists.map { |fa| fa.artist.spotify_id}
+    @genres = Genre.all
   end
 
   def create
@@ -13,8 +12,10 @@ class CreatePlaylistArtistsController < ApplicationController
     else
       playlist_name = new_playlist_name
     end
-    
-    artist_ids = params[:artist_ids].reject(&:blank?)
+
+    genre_ids = params[:genre_ids].reject(&:blank?)
+    # 選択されたジャンルの名前を取得
+    select_genres = Genre.where(id: genre_ids).pluck(:name)
 
     # お気に入りに登録した楽曲が15曲以上の場合はランダムで15曲を選択
     favorite_tracks = FavoriteTrack.where(user: current_user).pluck(:track_id)
@@ -51,7 +52,7 @@ class CreatePlaylistArtistsController < ApplicationController
     recommendations = RSpotify::Recommendations.generate(
         limit: 30,
         market: 'JP',
-        seed_artists: artist_ids,
+        seed_genres: select_genres,
         min_tempo: @tempo - 5,
         max_tempo: @tempo + 5,
         max_energy: @energy + 0.04,
@@ -74,7 +75,7 @@ class CreatePlaylistArtistsController < ApplicationController
     headers = {
       Authorization: "Bearer #{session[:spotify_access_token]}"
     }
-  
+
     user_response = RestClient.get("https://api.spotify.com/v1/me",headers)
     user_data = JSON.parse(user_response.body)
     user_id = user_data['id']
