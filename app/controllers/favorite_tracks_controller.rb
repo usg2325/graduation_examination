@@ -22,7 +22,7 @@ class FavoriteTracksController < ApplicationController
       if Artist.exists?(spotify_id: artist_id)
         @artist = Artist.find_by(spotify_id: artist_id)
       else
-        @artsit = Artist.new(name: artist_name, spotify_id: artist_id)
+        @artisst = Artist.new(name: artist_name, spotify_id: artist_id)
       end
       # 分析情報を取得
       headers = {

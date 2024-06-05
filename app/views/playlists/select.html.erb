@@ -1,10 +1,14 @@
-<div class="flex-grow flex justify-center items-center">
-<div class="text-center">
-	<h1 class="font-bold font-body"><%= 'プレイリスト作成方法を選択'%></h1>
-  
-	  <div class="py-20 space-x-12">
-		  <%= link_to "アーティストから", create_playlist_artists_path, class: "btn bg-extend-left fixed-size btn-outline btn-hover btn-secondary" %>
-		  <%= link_to "音楽ジャンルから", create_playlist_genres_path, class: "btn bg-extend-right fixed-size btn-outline btn-hover btn-primary" %>
+<div class="container">
+  <div class="split left">
+    <div class="h_select">
+      <h1><%= 'お気に入りアーティストからプレイリストを作成する' %></h1>
+    </div>
+    <%= link_to "選ぶ", create_playlist_artists_path, class: "button_select button_blue" %>
   </div>
+  <div class="split right">
+    <div class="h_select">
+      <h1><%= '音楽ジャンルからプレイリストを作成する' %></h1>
+    </div>
+    <%= link_to "選ぶ", create_playlist_genres_path, class: 'button_select button_pink' %>
   </div>
 </div>

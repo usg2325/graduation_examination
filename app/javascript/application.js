@@ -3,3 +3,4 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import "./custom/radio_buttons";
 import "./custom/checkboxes";
+import "./custom/select";
