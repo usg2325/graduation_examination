@@ -3,7 +3,7 @@ class FavoriteTracksController < ApplicationController
   before_action :set_favorite_track, only: %i[destroy]
 
   def index
-    @favorite_tracks = FavoriteTrack.where(user: current_user)
+    @favorite_tracks = FavoriteTrack.where(user: current_user).page(params[:page]).per(20)
     @track_ids = @favorite_tracks.map { |fa| fa.track.spotify_id }
   end
 

@@ -1,4 +1,6 @@
 class PlaylistsController < ApplicationController
+  before_action :ensure_spotify_token_valid, only: %i[show]
+
   def select; end
 
   def show

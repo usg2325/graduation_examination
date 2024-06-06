@@ -82,3 +82,5 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'rspotify'
 
 gem 'rails-i18n'
+
+gem 'kaminari'
