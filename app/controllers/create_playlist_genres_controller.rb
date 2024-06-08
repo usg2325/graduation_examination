@@ -2,7 +2,7 @@ class CreatePlaylistGenresController < ApplicationController
   before_action :ensure_spotify_token_valid, only: %i[create]
   before_action :set_genres, only: %i[create]
   before_action :set_playlist_name, only: %i[create]
-  before_action :set_favorite_tracks
+  before_action :set_favorite_tracks, only: %i[create]
 
   def index
     @genres = Genre.all
