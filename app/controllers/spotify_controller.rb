@@ -29,7 +29,7 @@ class SpotifyController < ApplicationController
     })
 
     response_data = JSON.parse(response.body)
-    access_token = response_data['access.token']
+    access_token = response_data['access_token']
     refresh_token = response_data['refresh_token']
 
     # アクセストークンとリフレッシュトークンをセッションに保存
@@ -43,6 +43,6 @@ class SpotifyController < ApplicationController
   private
 
   def callback_url
-    "http://localhost:3001/spotify_callback"
+    "https://discover-music.fly.dev/spotify_callback"
   end
 end

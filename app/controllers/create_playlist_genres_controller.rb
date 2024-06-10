@@ -50,7 +50,7 @@ class CreatePlaylistGenresController < ApplicationController
       # プレイリストに追加する曲を選択
       recommendations_tracks = recommendations.tracks.shuffle
       recommended_track = recommendations_tracks.find do |rec_track|
-        if !registered_track.include?(rec_track.id) && !registered_artist.include?(rec_track.artists.first.id) && !add_tracks.include?(rec_track)
+        if !registered_track.include?(rec_track.id) && !registered_artist.include?(rec_track.artists.first.id) && !add_tracks.include?(rec_track.id)
           add_tracks << rec_track.id
         end
         break if add_tracks.size >= index+1
