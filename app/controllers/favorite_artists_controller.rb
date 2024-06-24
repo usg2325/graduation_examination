@@ -18,7 +18,7 @@ class FavoriteArtistsController < ApplicationController
     else
       @artist = Artist.new(name: artist_name, spotify_id: artist_id)
       unless @artist.save
-        flash[:danger] = "アーティストの登録に失敗しました"
+        flash[:error] = "アーティストの登録に失敗しました"
         render 'new'
         return
       end
@@ -33,7 +33,7 @@ class FavoriteArtistsController < ApplicationController
         flash[:success] = 'お気に入りに追加しました'
         redirect_to favorite_artists_path
       else
-        flash[:danger] = 'お気に入りの登録に失敗しました'
+        flash[:error] = 'お気に入りの登録に失敗しました'
         render 'new'
       end
     end

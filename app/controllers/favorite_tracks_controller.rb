@@ -37,7 +37,7 @@ class FavoriteTracksController < ApplicationController
 
       @track = Track.new(name: track_name, spotify_id: track_id, artist: @artist, energy: energy, key: key, tempo: tempo)
       unless @track.save
-        flash[:danger] = "楽曲の登録に失敗しました"
+        flash[:error] = "楽曲の登録に失敗しました"
         render 'new'
         return
       end
@@ -52,7 +52,7 @@ class FavoriteTracksController < ApplicationController
         flash[:success] = 'お気に入りに追加しました'
         redirect_to favorite_tracks_path
       else
-        flash[:danger] = 'お気に入りの登録に失敗しました'
+        flash[:error] = 'お気に入りの登録に失敗しました'
         render 'new'
       end
     end

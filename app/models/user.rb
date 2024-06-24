@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  has_many :favorite_artists
-  has_many :favorite_tracks
-  has_many :playlists
+  has_many :favorite_artists, dependent: :destroy
+  has_many :favorite_tracks, dependent: :destroy
+  has_many :playlists, dependent: :destroy
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

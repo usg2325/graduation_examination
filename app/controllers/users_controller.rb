@@ -11,8 +11,8 @@ class UsersController < ApplicationController
       flash[:success] = 'ユーザー登録が完了しました'
       redirect_to login_path
     else
-      flash.now[:error] = 'ユーザー登録に失敗しました'
-      render :new, status: :unprocessable_entity
+      flash[:error] = 'ユーザー登録に失敗しました'
+      redirect_to sign_up_path
     end
   end
 

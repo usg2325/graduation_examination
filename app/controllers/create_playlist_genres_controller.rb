@@ -103,7 +103,7 @@ class CreatePlaylistGenresController < ApplicationController
       flash[:success] = 'プレイリストを作成しました'
       redirect_to playlist_path(new_playlist)
     else
-      flash[:danger] = 'プレイリストの作成に失敗しました'
+      flash[:error] = 'プレイリストの作成に失敗しました'
       render 'index'
     end
   end

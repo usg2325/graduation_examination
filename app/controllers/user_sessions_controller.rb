@@ -9,8 +9,8 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_to guide_spotify_login_path
     else
-      flash.now[:danger] = 'メールアドレスまたはパスワードが間違っています'
-      render :new, status: :unprocessable_entity
+      flash[:error] = 'メールアドレスまたはパスワードが間違っています'
+      redirect_to login_path
     end
   end
 

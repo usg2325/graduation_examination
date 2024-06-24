@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get '/spotify_login', to: 'spotify#login'
   get '/spotify_callback', to: 'spotify#callback'
 
+  get 'pre_sign_up', to: 'pre_sign_ups#new'
+  post 'pre_sign_up', to: 'pre_sign_ups#create'
+  get 'pre_sign_up_completed', to: 'pre_sign_ups#completed'
+
   resources :favorite_artists, only: %i[index create destroy] do
     collection do
       get :search
