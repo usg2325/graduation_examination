@@ -1,0 +1,19 @@
+<button class="btn btn-outline btn-primary rounded-full" onclick="document.getElementById('delete_confirmation_<%= playlist_id %>').showModal()">
+  <span><%= "削除" %></span>
+</button>
+
+<!-- ダイアログ表示 -->
+<dialog id="delete_confirmation_<%= playlist_id %>" class="modal">
+  <div class="modal-box">
+    <p class="text-center">
+      <%= "#{Playlist.find_by(spotify_id: playlist_id).name}を削除しますか?" %>
+    </p>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">キャンセル</button>
+      </form>
+      <% playlist = Playlist.find_by(spotify_id: playlist_id) %>
+      <%= button_to "削除する", playlist_path(playlist), method: :delete, class: "btn btn-warning" %>
+    </div>
+  </div>
+</dialog>

@@ -1,0 +1,16 @@
+<div class="flex w-full py-20 px-20">
+    <h1 class="text-4xl font-bold font-body"><%= 'プレイリスト一覧' %></h1>
+</div>
+
+<!-- プレイリスト表示 -->
+<div class="flex justify-center">
+  <div class="grid grid-cols-2 gap-y-20 gap-x-0 w-full justify-items-center">
+    <% @playlist_ids.each do |playlist_id| %>
+      <%= render 'playlist_card', playlist_id: playlist_id %>
+    <% end %>
+  </div>
+</div>
+
+<div class="flex justify-center py-20">
+  <%= paginate @user_playlist %>
+</div>

@@ -1,7 +1,13 @@
 class PlaylistsController < ApplicationController
-  before_action :ensure_spotify_token_valid, only: %i[show]
+  before_action :ensure_spotify_token_valid, only: %i[show destroy]
+  before_action :set_playlist, only: %i[destroy]
 
   def select; end
+
+  def index
+    @user_playlist = Playlist.where(user: current_user).page(params[:page]).per(10)
+    @playlist_ids = @user_playlist.map { |fa| fa.spotify_id }
+  end
 
   def show
     @playlist = Playlist.find(params[:id])
@@ -29,5 +35,25 @@ class PlaylistsController < ApplicationController
     end
 
     @playlist_items = playlist_item
+  end
+
+  def destroy
+    playlist_id = @playlist.spotify_id
+
+    headers = {
+      Authorization: "Bearer #{session[:spotify_access_token]}"
+    }
+
+    RestClient.delete("https://api.spotify.com/v1/playlists/#{playlist_id}/followers", headers)
+    
+    @playlist.destroy!
+    flash[:success] = "プレイリストを削除しました"
+    redirect_to playlists_path, status: :see_other
+  end
+
+  private
+  
+  def set_playlist
+    @playlist = Playlist.find(params[:id])
   end
 end

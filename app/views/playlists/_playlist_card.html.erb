@@ -1,0 +1,21 @@
+<div class="border border-4 border-sky-400 w-3/4 rounded-2xl"> 
+  <div class="card card-side w-full flex justify-center bg-neutral">
+    <figure class="px-5 py-5">
+      <% playlist = RSpotify::Playlist.find(nil, playlist_id) %>
+      <% if playlist.images.any? %>
+        <% image = playlist.images.first %>
+        <img src="<%= image['url'] %>?size=300x300" alt="Playlist Artwork" class="rounded-xl" style="width: 250px; height: 250px;" />
+      <% else %>
+        <img src="<%= image_path('20200501_noimage.png') %>" alt="Playlist Artwork" class="rounded-xl" style="width: 200px; height: 200px;" />
+      <% end %>
+    </figure>
+    <div class="card-body items-center text-center">
+      <% playlist_name = Playlist.find_by(spotify_id: playlist_id).name %>
+      <% playlist = Playlist.find_by(spotify_id: playlist_id) %>
+      <h2 class="card-title pt-10 pb-3 pr-5 link"><%= link_to "#{playlist_name}", playlist_path(playlist),  method: :get %></h2>
+      <% create_date = Playlist.find_by(spotify_id: playlist_id).date %>
+      <p class="flex flex-row-reverse px-2"><%= "作成日 : #{create_date}" %></p>
+      <%= render "delete_playlist", playlist_id: playlist_id %>
+    </div>
+  </div>
+</div>
