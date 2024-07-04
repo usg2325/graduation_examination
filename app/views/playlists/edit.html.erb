@@ -1,0 +1,23 @@
+<%= form_with model: @playlist, url: playlist_path(@playlist), method: :put do |f| %>
+  <div class="grid grid-cols-2 w-full">
+    <div class="flex flex-col pt-20 pl-10 w-full">
+      <%= f.label :プレイリスト名, class: 'py-5' %>
+      <%= f.text_field :playlist_name, class: 'form-control input input-bordered input-secondary w-full', value: @playlist_name %>
+    </div>
+    <div class="flex flex-col w-full justify-center pt-20">
+      <%= f.label :公開状況, class: 'py-5 px-40' %>
+      <div class="flex flex-row px-40">
+        <%= f.radio_button :public_status , 'private', name: 'playlist[public_status]', class: "radio radio-accent", checked: @playlist_public==false %>
+        <%= f.label :public_status, 'プライベート', value: 'private' %>
+      </div>
+      <div class="flex flex-row px-40 pt-3" >
+        <%= f.radio_button :public_status , 'public', name: 'playlist[public_status]', class: "radio radio-accent", checked: @playlist_public==true %>
+        <%= f.label :public_status, 'パブリック', value: 'public' %>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center mt-10 gap-10">
+    <%= f.submit '保存', class: 'btn btn-primary' %>
+    <%= link_to 'キャンセル', playlist_path(@playlist), class: 'btn btn-primary' %>
+  </div>
+<% end %>

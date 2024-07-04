@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get 'favorite_tracks/new'
 
   get 'playlists/select'
-  resources :playlists, only: %i[show]
+  resources :playlists, only: %i[show index destroy edit update]
 
   resources :create_playlist_artists, only: %i[index create]
 

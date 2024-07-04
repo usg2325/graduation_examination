@@ -21,8 +21,10 @@
           </div>
           <% spotify_url = "https://open.spotify.com/playlist/#{@playlist.spotify_id}" %>
           <div class="flex justify-center py-10">
-            <%= link_to "Spotifyで聴く", spotify_url, class: "btn btn-accent" %>
-            <a href="https://twitter.com/intent/tweet?text=シェアするテキスト&url=https://example.com" target="_blank">Twitterでシェア</a>
+            <div class="flex flex-col gap-5">
+              <%= link_to "Spotifyで聴く", spotify_url, class: "btn btn-accent" %>
+              <%= link_to "編集する", edit_playlist_path(@playlist), class: "btn btn-accent" %>
+            </div>
           </div>
         </div>
         <div class="w-2/3 p-4">
