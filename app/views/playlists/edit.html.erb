@@ -16,8 +16,38 @@
       </div>
     </div>
   </div>
-  <div class="flex justify-center mt-10 gap-10">
-    <%= f.submit '保存', class: 'btn btn-primary' %>
+  <div class="divider px-10 pt-10"></div>
+  <div class="flex justify-center w-full px-10">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>タイトル</th>
+          <th>アーティスト</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="playlist-items" data-playlist-items="<%= @playlist_items.to_json %>">
+        <% @playlist_items.each_with_index do |playlist_item, index| %>
+          <tr class="table-row">
+            <td><%= index+1 %></td>
+            <td><%= playlist_item[0] %></td>
+            <td><%= playlist_item[1] %></td>
+            <td><button type="button" class="btn btn-outline btn-secondary" onclick="moveUp(<%= index %>)" > ↑ </button></td>
+            <td><button type="button" class="btn btn-outline btn-secondary" onclick="moveDown(<%= index %>)"> ↓ </button></td>
+            <td><button type="button" class="btn btn-outline btn-primary" onclick="removeItem(<%= index %>)"><%= " 削除 " %></button></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="divider px-10"></div>
+  <div class="flex justify-center py-10 gap-10">
+    <%= f.hidden_field :playlist_items, id: 'hidden_playlist_items', value: @playlist_items.to_json %>
+    <%= f.hidden_field :current_playlist_items, value: @playlist_items.to_json %>
+    <%= f.submit '保存', class: 'btn btn-primary', onclick:  'syncPlaylistItems()' %>
     <%= link_to 'キャンセル', playlist_path(@playlist), class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -10,19 +10,22 @@ class PlaylistsController < ApplicationController
   end
 
   def show
+    playlist_status
     set_playlist_items
   end
 
   def edit
     @playlist_name = @playlist.name
+    playlist_status
     set_playlist_items
-
   end
 
   def update
     playlist_params = set_playlist_params
     playlist_name = playlist_params[:playlist_name]
     public_status = playlist_params[:public_status] == 'public'
+    new_playlist_items = JSON.parse(playlist_params[:playlist_items])
+    current_playlist_items = JSON.parse(playlist_params[:current_playlist_items])
 
     @playlist.update(name: playlist_name)
 
@@ -40,6 +43,26 @@ class PlaylistsController < ApplicationController
         accept: :json
       }
     )
+
+    if new_playlist_items != current_playlist_items
+      headers = {
+        Authorization: "Bearer #{session[:spotify_access_token]}",
+        content_type: :json
+      }
+
+      RestClient.put(
+        "https://api.spotify.com/v1/playlists/#{playlist_id}/tracks",
+        { uris: [] }.to_json,
+        headers
+      )
+
+      uris = new_playlist_items.map { |item| "spotify:track:#{item[2]}"}
+      RestClient.post(
+        "https://api.spotify.com/v1/playlists/#{playlist_id}/tracks",
+        { uris: uris }.to_json,
+        headers
+      )
+    end
 
     flash[:success] = "プレイリストを変更しました"
     redirect_to playlist_path(@playlist)
@@ -67,10 +90,10 @@ class PlaylistsController < ApplicationController
   end
 
   def set_playlist_params
-    params.require(:playlist).permit(:playlist_name, :public_status)
+    params.require(:playlist).permit(:playlist_name, :public_status, :playlist_items, :current_playlist_items)
   end
 
-  def set_playlist_items
+  def playlist_status
     playlist_id = Playlist.find_by(id: @playlist).spotify_id
 
     # プレイリストがプロフィールで公開されているかを確認
@@ -86,6 +109,10 @@ class PlaylistsController < ApplicationController
     playlist_ids = playlists_info['items'].map { |playlist| playlist['id'] }
 
     @playlist_public = playlist_ids.include?(playlist_id)
+  end
+
+  def set_playlist_items
+    playlist_id = Playlist.find_by(id: @playlist).spotify_id
 
     #プレイリスト収録曲の確認
     playlist_items = RestClient.get(
@@ -104,7 +131,8 @@ class PlaylistsController < ApplicationController
       track_info = track['track']
       track_name = track_info['name']
       artist_name = track_info['artists'].map { |artist| artist['name'] }.join(', ')
-      playlist_item << [track_name, artist_name]
+      track_id = track_info['id']
+      playlist_item << [track_name, artist_name, track_id]
     end
 
     @playlist_items = playlist_item
