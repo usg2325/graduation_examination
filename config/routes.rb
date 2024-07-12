@@ -41,6 +41,8 @@ Rails.application.routes.draw do
 
   resources :create_playlist_genres, only: %i[index create]
 
+  resources :password_resets, only: %i[create edit update new]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

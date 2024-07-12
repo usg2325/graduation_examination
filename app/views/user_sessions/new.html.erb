@@ -4,19 +4,18 @@
     <li class="step step-primary">アプリログイン</li>
     <li class="step">Spotifyログイン</li>
   </ul>
-    <%= form_with url: login_path, local: true, class: "w-1/4" do |f| %>
-      <div class="form-group pt-10">
-        <%= f.label :メールアドレス %>
-        <%= f.email_field :email, class: 'form-control input input-bordered input-secondary w-full' %>
-      </div>
-      <div class="form-group pt-5">
-        <%= f.label :パスワード %>
-        <%= f.password_field :password, class: 'form-control input input-bordered input-secondary w-full' %>
-      </div>
-      <div class="actions pt-10 flex justify-center">
-        <%= f.submit "ログイン", class: 'btn btn-primary w-1/2' %>
-      </div>
-    <% end %>
+  <%= form_with url: login_path, local: true, class: "w-1/4" do |f| %>
+    <div class="form-group pt-10">
+      <%= f.label :メールアドレス %>
+      <%= f.email_field :email, class: 'form-control input input-bordered input-secondary w-full' %>
     </div>
-  </div>
+    <div class="form-group pt-5">
+      <%= f.label :パスワード %>
+      <%= f.password_field :password, class: 'form-control input input-bordered input-secondary w-full' %>
+    </div>
+    <div class="actions py-10 flex justify-center">
+      <%= f.submit "ログイン", class: 'btn btn-primary w-1/2' %>
+    </div>
+  <% end %>
+  <%= link_to "パスワードを忘れた場合", new_password_reset_path, class: 'link link-hover' %>
 </div>
