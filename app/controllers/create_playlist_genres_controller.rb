@@ -3,6 +3,7 @@ class CreatePlaylistGenresController < ApplicationController
   before_action :set_genres, only: %i[create]
   before_action :set_playlist_name, only: %i[create]
   before_action :set_favorite_tracks, only: %i[create]
+  before_action :set_playlist_track_of_number, only: %i[create]
 
   def index
     @genres = Genre.all
@@ -10,18 +11,19 @@ class CreatePlaylistGenresController < ApplicationController
 
   def create
     playlist_name = @playlist_name
+    playlist_number = @playlist_number
 
     # 選択されたジャンルの名前を取得
     select_genres = @select_genres
 
-    # お気に入りに登録した楽曲が10曲以上の場合は、ランダムで10曲を選択
+    # お気に入りに登録した楽曲がプレイリストの曲数以上の場合は、ランダムで選択
     favorite_tracks = @favorite_tracks
     target_tracks =[]
 
-    if favorite_tracks.size > 10
-      target_tracks = favorite_tracks.sample(10)
+    if favorite_tracks.size > playlist_number
+      target_tracks = favorite_tracks.sample(playlist_number)
     else
-      target_tracks = favorite_tracks.cycle.take(10)
+      target_tracks = favorite_tracks.cycle.take(playlist_number)
     end
 
     # お気に入り登録済みのアーティストIDとトラックIDを取得
@@ -111,7 +113,7 @@ class CreatePlaylistGenresController < ApplicationController
   private
 
   def genre_params
-    params.require(:create_genre).permit(:playlist_name, genre_ids: [])
+    params.require(:create_genre).permit(:playlist_name, :playlist_number, genre_ids: [])
   end
 
   def set_genres
@@ -136,12 +138,31 @@ class CreatePlaylistGenresController < ApplicationController
   end
 
   def set_favorite_tracks
-    favorite_tracks = favorite_tracks = FavoriteTrack.where(user: current_user).pluck(:track_id)
-    if favorite_tracks.blank?
-      flash[:warning] = "お気に入り楽曲を登録してください"
+    favorite_tracks = FavoriteTrack.where(user: current_user).pluck(:track_id)
+    favorite_tracks_count = favorite_tracks.length
+    if favorite_tracks_count < 5
+      flash[:warning] = "お気に入り楽曲を5曲以上登録してください"
       redirect_to favorite_tracks_path
     else
       @favorite_tracks = favorite_tracks
+    end
+  end
+
+  def set_playlist_track_of_number
+    playlist_number_str = genre_params[:playlist_number]
+
+    if playlist_number_str.blank?
+      @playlist_number = 10
+      return
+    end
+
+    playlist_number = playlist_number_str.tr('０-９', '0-9').to_i
+
+    if playlist_number >= 10 && playlist_number <= 30
+      @playlist_number = playlist_number
+    elsif playlist_number < 10 || playlist_number > 30
+      flash[:warning] = "10から30曲の間で設定してください"
+      redirect_to create_playlist_genres_path
     end
   end
 end
