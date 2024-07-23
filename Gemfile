@@ -84,3 +84,7 @@ gem 'rspotify'
 gem 'rails-i18n'
 
 gem 'kaminari'
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'

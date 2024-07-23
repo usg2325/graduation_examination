@@ -2,14 +2,22 @@ Rails.application.routes.draw do
   
   root 'top_pages#top'
 
-  resources :users
+  resources :users, only: %i[new create]
+  
   get 'sign_up', to: 'users#new'
+  get 'select_sign_up', to: 'users#select'
   get 'app_top', to: 'top_pages#app_top'
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   get 'guide_spotify_login', to: 'user_sessions#guide_spotify_login'
+
+  get '/auth/:provider/callback', to: 'google#create', as: 'google_auth_callback'
+  get '/auth/failure', to: redirect('/')
+
+  get 'user_sessions/google_auth', to: 'user_sessions#google_auth', as: 'google_login'
+  get 'users/google_auth', to: 'users#google_auth', as: 'google_signup'
 
   get '/spotify_login', to: 'spotify#login'
   get '/spotify_callback', to: 'spotify#callback'

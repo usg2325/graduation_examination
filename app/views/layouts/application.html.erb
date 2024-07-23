@@ -25,7 +25,7 @@
   <body>
     <% if !logged_in? && (current_page?(root_path) || current_page?(pre_sign_up_path) || current_page?(pre_sign_up_completed_path) || current_page?(login_path) || current_page?(new_password_reset_path)) %>
       <%= render 'shared/before_login_header' %>
-    <% elsif !logged_in? && (current_page?(sign_up_path) || current_page?(edit_password_reset_path)) %>
+    <% elsif !logged_in? && (current_page?(sign_up_path) || current_page?(select_sign_up_path) || current_page?(edit_password_reset_path)) %>
       <%= render 'shared/sign_up_header' %>
     <% elsif logged_in? && (current_page?(guide_spotify_login_path) || current_page?(app_top_path)) %>
       <%= render 'shared/after_login_header' %>
