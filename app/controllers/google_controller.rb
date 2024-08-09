@@ -1,22 +1,24 @@
 class GoogleController < ApplicationController
-  skip_before_action :require_login, only: %i[create]
+  skip_before_action :require_login
 
-  def create
-    user_info = request.env['omniauth.auth']
+  def oauth
+    session[:state] = auth_params[:state]
+    login_at(auth_params[:provider])
+  end
 
-    state = request.env['omniauth.params']['state']
+  def callback
+    provider = auth_params[:provider]
+    state = session[:state]
+    session.delete(:state)
 
-    uid = user_info[:uid]
-    provider = user_info[:provider]
-    name = user_info[:info][:name]
-    email = user_info[:info][:email]
-
-    session[:uid] = uid
+    sorcery_fetch_user_hash(provider)
+    session[:uid] = @user_hash[:uid]
     session[:provider] = provider
 
     if state == 'signup'
-      session[:name] = name
-      session[:email] = email
+      user_info = @user_hash[:user_info]
+      session[:email] = user_info['email']
+      session[:name] = user_info['name']
       redirect_to google_signup_path
     elsif state == 'login'
       redirect_to google_login_path
@@ -25,4 +27,9 @@ class GoogleController < ApplicationController
     end
   end
 
+  private
+
+  def auth_params
+    params.permit(:code, :provider, :state)
+  end
 end

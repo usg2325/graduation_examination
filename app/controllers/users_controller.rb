@@ -29,15 +29,14 @@ class UsersController < ApplicationController
     session.delete(:name)
     session.delete(:email)
 
-    user = User.find_by(uid: uid, provider: provider)
+    auth = Authentication.find_by(uid: uid, provider: provider)
+    user = User.find_by(id: auth.user_id) if auth
     if user
       flash[:error] = 'すでにこのGoogleアカウントは登録されています'
       redirect_to login_path
     else
       password = SecureRandom.hex(16)
       @user = User.new(
-        uid: uid,
-        provider: provider,
         name: name,
         email: email,
         password: password,
@@ -45,11 +44,19 @@ class UsersController < ApplicationController
       )
 
       if @user.save
-        flash[:success] = 'Googleアカウントでのユーザー登録が完了しました'
-        redirect_to login_path
-      else
-        flash[:error] = 'ユーザー登録に失敗しました'
-        redirect_to select_sign_up_path
+        @authenticate = Authentication.new(
+          user_id: @user.id,
+          uid: uid,
+          provider: provider,
+        )
+
+        if @authenticate.save
+          flash[:success] = 'Googleアカウントでのユーザー登録が完了しました'
+          redirect_to login_path
+        else
+          flash[:error] = 'ユーザー登録に失敗しました'
+          redirect_to select_sign_up_path
+        end
       end
     end
   end

@@ -21,7 +21,8 @@ class UserSessionsController < ApplicationController
     session.delete(:uid)
     session.delete(:provider)
 
-    user = User.find_by(uid: uid, provider: provider)
+    auth = Authentication.find_by(uid: uid, provider: provider)
+    user = User.find_by(id: auth.user_id) if auth
     if user
       auto_login(user)
       redirect_to guide_spotify_login_path

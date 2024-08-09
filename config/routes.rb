@@ -13,12 +13,13 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
   get 'guide_spotify_login', to: 'user_sessions#guide_spotify_login'
 
-  get '/auth/:provider/callback', to: 'google#create', as: 'google_auth_callback'
-  get '/auth/failure', to: redirect('/')
+  post 'oauth/callback', to: 'google#callback'
+  get 'oauth/callback', to: 'google#callback'
+  get 'oauth/:provider', to: 'google#oauth', as: 'auth_at_provider'
 
   get 'user_sessions/google_auth', to: 'user_sessions#google_auth', as: 'google_login'
   get 'users/google_auth', to: 'users#google_auth', as: 'google_signup'
-
+  
   get '/spotify_login', to: 'spotify#login'
   get '/spotify_callback', to: 'spotify#callback'
 
