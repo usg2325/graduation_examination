@@ -22,10 +22,13 @@
                 <p class="text-base font-normal"><%= "作成日 : #{@playlist.date}" %></p>
               </div>
               <% spotify_url = "https://open.spotify.com/playlist/#{@playlist.spotify_id}" %>
-              <% app_url = "http://localhost:3001" %>
+              <% app_url = "https://discover-music.fly.dev" %>
               <div class="flex justify-center pt-10">
                 <div class="flex flex-col gap-5">
-                  <%= link_to "Spotifyで聴く", spotify_url, class: "btn btn-accent" %>
+                  <%= link_to spotify_url, class: "btn bg-gray-50 text-indigo-950 hover:bg-gray-200 hover:text-indigo-950" do %>
+                  <%= image_tag "Spotify_Icon_RGB_Green.png", size: "20x20" %>
+                    Spotifyで聴く
+                  <% end %>
                   <%= link_to "編集する", edit_playlist_path(@playlist), class: "btn btn-accent" %>
                   <%= link_to  "https://twitter.com/share?url=#{CGI.escape(app_url)}&text=【Discover music】でプレイリストを作成しました#{CGI.escape(spotify_url)}", class: "btn bg-black text-slate-100 ", disabled: @playlist_public ? nil : "disabled" do  %>
                   <%= image_tag "logo-white.png", size: "12x12" %>
