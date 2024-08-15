@@ -7,46 +7,51 @@
       <h1 class="text-3xl font-bold underline font-body px-8 pt-5">
           <%= "使い方" %>
       </h1>
-      <div class="pt-10 py-5 flex justify-center h-full">
+      <div class="pb-5 flex justify-center h-full">
         <div class="w-5/6 h-full carousel">
           <div id="slide1" class="carousel-item relative w-full">
             <div class="card bg-neutral w-full px-14">
-            <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "１ 事前登録" %></h2>
+              <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "１ 事前登録" %></h2>
               <p  class="card-body"><%= File.read("#{Rails.root}/app/assets/text/how_to_use_1.txt").html_safe %></p>
             </div>
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide4" class="btn btn-circle">❮</a> 
-              <a href="#slide2" class="btn btn-circle">❯</a>
+            <div class="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
+              <a href="#slide2" class="btn btn-circle">➡︎</a>
             </div>
           </div> 
           <div id="slide2" class="carousel-item relative w-full">
             <div class="card bg-neutral w-full px-14">
-            <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "２ プレイリストを作ろう①" %></h2>
+              <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "２ プレイリストを作ろう①" %></h2>
               <p  class="card-body"><%= File.read("#{Rails.root}/app/assets/text/how_to_use_2.txt").html_safe %></p>
             </div>
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide1" class="btn btn-circle">❮</a> 
-              <a href="#slide3" class="btn btn-circle">❯</a>
+            <div class="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
+              <a href="#slide3" class="btn btn-circle">➡︎</a>
             </div>
-          </div> 
+          </div>
           <div id="slide3" class="carousel-item relative w-full">
             <div class="card bg-neutral w-full px-14">
-            <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "３ プレイリストを作ろう②" %></h2>
-              <p class="card-body"><%= File.read("#{Rails.root}/app/assets/text/how_to_use_3.txt").html_safe %></p>
+              <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "３ プレイリストを作ろう②" %></h2>
+              <p  class="card-body"><%= File.read("#{Rails.root}/app/assets/text/how_to_use_3.txt").html_safe %></p>
             </div>
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide2" class="btn btn-circle">❮</a> 
-              <a href="#slide4" class="btn btn-circle">❯</a>
+            <div class="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
+              <a href="#slide4" class="btn btn-circle">➡︎</a>
             </div>
-          </div> 
+          </div>
           <div id="slide4" class="carousel-item relative w-full">
             <div class="card bg-neutral w-full px-14">
-            <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "４ 完成したプレイリストを聴いてみよう" %></h2>
+              <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "４ 完成したプレイリストを聴いてみよう" %></h2>
               <p  class="card-body"><%= File.read("#{Rails.root}/app/assets/text/how_to_use_4.txt").html_safe %></p>
             </div>
-            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide3" class="btn btn-circle">❮</a> 
-              <a href="#slide1" class="btn btn-circle">❯</a>
+            <div class="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
+              <a href="#slide5" class="btn btn-circle">➡︎</a>
+            </div>
+          </div>
+          <div id="slide5" class="carousel-item relative w-full">
+            <div class="card bg-neutral w-full px-14">
+              <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "５ プレイリストをシェアする" %></h2>
+              <p  class="card-body"><%= File.read("#{Rails.root}/app/assets/text/how_to_use_5.txt").html_safe %></p>
+            </div>
+            <div class="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
+              <a href="#slide1" class="btn btn-circle">⬅︎</a>
             </div>
           </div>
         </div>
