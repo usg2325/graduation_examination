@@ -4,14 +4,14 @@
 <div class="grid grid-cols-2 w-full”>
   <div class="h-screen">
     <div class=" flex flex-col">
-      <h1 class="text-3xl font-bold underline font-body px-8 pt-5">
+      <h1 class="text-3xl  px-10 pt-5 font-kosugi">
           <%= "使い方" %>
       </h1>
-      <div class="pb-5 flex justify-center h-full">
+      <div class="py-10 flex justify-center h-full">
         <div class="w-5/6 h-full carousel">
           <div id="slide1" class="carousel-item relative w-full">
             <div class="card bg-neutral w-full px-14">
-              <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "１ 事前登録" %></h2>
+              <h2 class="card-title text-base-300 pt-10 text-neutral-50 font-kiwi"><%= "１ 事前登録" %></h2>
               <p  class="card-body"><%= File.read("#{Rails.root}/app/assets/text/how_to_use_1.txt").html_safe %></p>
             </div>
             <div class="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -20,7 +20,7 @@
           </div> 
           <div id="slide2" class="carousel-item relative w-full">
             <div class="card bg-neutral w-full px-14">
-              <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "２ プレイリストを作ろう①" %></h2>
+              <h2 class="card-title text-base-300 pt-10 text-neutral-50 font-kiwi"><%= "２ プレイリストを作ろう①" %></h2>
               <p  class="card-body"><%= File.read("#{Rails.root}/app/assets/text/how_to_use_2.txt").html_safe %></p>
             </div>
             <div class="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -29,7 +29,7 @@
           </div>
           <div id="slide3" class="carousel-item relative w-full">
             <div class="card bg-neutral w-full px-14">
-              <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "３ プレイリストを作ろう②" %></h2>
+              <h2 class="card-title text-base-300 pt-10 text-neutral-50 font-kiwi"><%= "３ プレイリストを作ろう②" %></h2>
               <p  class="card-body"><%= File.read("#{Rails.root}/app/assets/text/how_to_use_3.txt").html_safe %></p>
             </div>
             <div class="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -38,7 +38,7 @@
           </div>
           <div id="slide4" class="carousel-item relative w-full">
             <div class="card bg-neutral w-full px-14">
-              <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "４ 完成したプレイリストを聴いてみよう" %></h2>
+              <h2 class="card-title text-base-300 pt-10 text-neutral-50 font-kiwi"><%= "４ 完成したプレイリストを聴いてみよう" %></h2>
               <p  class="card-body"><%= File.read("#{Rails.root}/app/assets/text/how_to_use_4.txt").html_safe %></p>
             </div>
             <div class="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -47,7 +47,7 @@
           </div>
           <div id="slide5" class="carousel-item relative w-full">
             <div class="card bg-neutral w-full px-14">
-              <h2 class="card-title text-base-300 pt-10 text-neutral-50"><%= "５ プレイリストをシェアする" %></h2>
+              <h2 class="card-title text-base-300 pt-10 text-neutral-50 font-kiwi"><%= "５ プレイリストをシェアする" %></h2>
               <p  class="card-body"><%= File.read("#{Rails.root}/app/assets/text/how_to_use_5.txt").html_safe %></p>
             </div>
             <div class="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -60,7 +60,7 @@
 
     <div class="w-full"> 
       <div class="flex flex-col">
-        <h1 class="text-3xl font-bold underline font-body px-8 pt-5">
+        <h1 class="text-3xl px-10 pt-5 font-kosugi">
           <%= "コンテンツ" %>
         </h1>
         <div class="flex justify-center pb-5">
@@ -68,7 +68,7 @@
             <div class="flex flex-col pt-10">
               <div class="card bg-secondary w-full">
                 <div class="card-body  items-center">
-                  <h2 class="card-title text-base-300">プレイリスト</h2>
+                  <h2 class="card-title text-base-300 font-kiwi">プレイリスト</h2>
                 </div>
                 <figure><img src="<%= image_path('Headphone-amico.png') %>" alt="playlist" /></figure>
               </div>
@@ -82,7 +82,7 @@
             <div class="flex flex-col pt-10">
               <div class="card bg-accent w-full">
                 <div class="card-body  items-center">
-                  <h2 class="card-title text-base-300">お気に入り</h2>
+                  <h2 class="card-title text-base-300 font-kiwi">お気に入り</h2>
                 </div>
                 <figure><img src="<%= image_path('Music-amico.png') %>" alt="favorite" /></figure>
               </div>
