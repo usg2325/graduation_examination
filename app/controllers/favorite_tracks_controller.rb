@@ -13,6 +13,11 @@ class FavoriteTracksController < ApplicationController
     track_name = track_params[:track_name]
     artist_name = track_params[:artist_name]
 
+    # 楽曲が選択されていなかった場合、処理を終了
+    if track_id.blank?
+      return
+    end
+
     if Track.exists?(spotify_id: track_id)
       @track = Track.find_by(spotify_id: track_id)
     else

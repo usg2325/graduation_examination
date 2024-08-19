@@ -13,12 +13,17 @@ class FavoriteArtistsController < ApplicationController
     artist_id = artist_params[:artist_id]
     artist_name = artist_params[:artist_name]
 
+    # アーティストが選択されていなかった場合、処理を終了
+    if artist_id.blank?
+      return
+    end
+
     if Artist.exists?(spotify_id: artist_id)
       @artist = Artist.find_by(spotify_id: artist_id)
     else
       @artist = Artist.new(name: artist_name, spotify_id: artist_id)
       unless @artist.save
-        flash[:error] = "アーティストの登録に失敗しました"
+        flash.now[:error] = "アーティストの登録に失敗しました"
         render 'new'
         return
       end
