@@ -1,0 +1,11 @@
+<input type="checkbox" id="shortage_tracks" class="modal-toggle" style="display:none;" checked />
+<div class="modal" role="dialog">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">お気に入り楽曲を登録してください</h3>
+    <p class="py-5">プレイリストを作成するためには、お気に入り楽曲を5つ以上登録する必要があります</p>
+    <div class="modal-action">
+      <label for="shortage_tracks" class="btn">閉じる</label>
+      <%= link_to "登録ページへ", favorite_tracks_new_path , class: "btn btn-accent" %>
+    </div> 
+  </div>
+</div>

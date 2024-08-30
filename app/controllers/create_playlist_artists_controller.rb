@@ -8,6 +8,7 @@ class CreatePlaylistArtistsController < ApplicationController
   def index
     @favorite_artists = FavoriteArtist.where(user: current_user)
     @artist_ids = @favorite_artists.map { |fa| fa.artist.spotify_id}
+    @favorite_tracks = FavoriteTrack.where(user: current_user)
   end
 
   def create

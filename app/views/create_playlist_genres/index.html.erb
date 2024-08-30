@@ -50,3 +50,8 @@
     </div>
   </div>
 <% end %>
+
+<!-- お気に入り楽曲が5曲登録されていなかった場合、ダイアログを表示する -->
+<% if @favorite_tracks.length < 5 %>
+  <%= render "create_playlist_artists/shortage_tracks" %>
+<% end %>

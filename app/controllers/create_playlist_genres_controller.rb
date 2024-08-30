@@ -7,6 +7,7 @@ class CreatePlaylistGenresController < ApplicationController
 
   def index
     @genres = Genre.all
+    @favorite_tracks = FavoriteTrack.where(user: current_user)
   end
 
   def create

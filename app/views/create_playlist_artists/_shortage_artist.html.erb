@@ -1,0 +1,11 @@
+<input type="checkbox" id="shortage_artist" class="modal-toggle" style="display:none;" checked />
+<div class="modal" role="dialog">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">お気に入りアーティストを登録してください</h3>
+    <p class="py-5">この方法でプレイリストを作成するためには、お気に入りアーティストを1つ以上登録する必要があります</p>
+    <div class="modal-action">
+      <label for="shortage_artist" class="btn">閉じる</label>
+      <%= link_to "登録ページへ", favorite_artists_new_path , class: "btn btn-accent" %>
+    </div> 
+  </div>
+</div>
