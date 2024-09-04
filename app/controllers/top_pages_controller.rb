@@ -3,5 +3,7 @@ class TopPagesController < ApplicationController
 
   def top; end
 
-  def app_top; end
+  def app_top
+    @favorite_tracks = FavoriteTrack.where(user: current_user)
+  end
 end

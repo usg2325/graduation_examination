@@ -36,6 +36,8 @@ class SpotifyController < ApplicationController
     session[:spotify_access_token] = access_token
     session[:spotify_refresh_token] = refresh_token
 
+    session[:just_login] = true
+
     flash[:success] = 'ログインしました'
     redirect_to app_top_path
   end

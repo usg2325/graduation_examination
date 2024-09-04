@@ -99,3 +99,10 @@
     </div>
   </div>
 </div>
+
+<% if session[:just_login] == true && @favorite_tracks.length < 5 %>
+  <%= render "just_login" %>
+  <% session.delete(:just_login) %>
+<% elsif session[:just_login] == true %>
+  <% session.delete(:just_login) %>
+<% end %>
