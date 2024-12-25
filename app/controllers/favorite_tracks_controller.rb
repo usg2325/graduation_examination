@@ -13,6 +13,11 @@ class FavoriteTracksController < ApplicationController
     track_name = track_params[:track_name]
     artist_name = track_params[:artist_name]
 
+    # 楽曲が選択されていなかった場合、処理を終了
+    if track_id.blank?
+      return
+    end
+
     if Track.exists?(spotify_id: track_id)
       @track = Track.find_by(spotify_id: track_id)
     else
@@ -37,7 +42,7 @@ class FavoriteTracksController < ApplicationController
 
       @track = Track.new(name: track_name, spotify_id: track_id, artist: @artist, energy: energy, key: key, tempo: tempo)
       unless @track.save
-        flash[:danger] = "楽曲の登録に失敗しました"
+        flash[:error] = "楽曲の登録に失敗しました"
         render 'new'
         return
       end
@@ -52,7 +57,7 @@ class FavoriteTracksController < ApplicationController
         flash[:success] = 'お気に入りに追加しました'
         redirect_to favorite_tracks_path
       else
-        flash[:danger] = 'お気に入りの登録に失敗しました'
+        flash[:error] = 'お気に入りの登録に失敗しました'
         render 'new'
       end
     end

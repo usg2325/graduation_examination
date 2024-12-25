@@ -1,0 +1,53 @@
+<%= form_with model: @playlist, url: playlist_path(@playlist), method: :put do |f| %>
+  <div class="grid grid-cols-2 w-full">
+    <div class="flex flex-col pt-20 pl-10 w-full">
+      <%= f.label :プレイリスト名, class: 'py-5' %>
+      <%= f.text_field :playlist_name, class: 'form-control input input-bordered input-secondary w-full', value: @playlist_name %>
+    </div>
+    <div class="flex flex-col w-full justify-center pt-20">
+      <%= f.label :公開状況, class: 'py-5 px-40' %>
+      <div class="flex flex-row px-40">
+        <%= f.radio_button :public_status , 'private', name: 'playlist[public_status]', class: "radio radio-accent", checked: @playlist_public==false %>
+        <%= f.label :public_status, 'プライベート', value: 'private' %>
+      </div>
+      <div class="flex flex-row px-40 pt-3" >
+        <%= f.radio_button :public_status , 'public', name: 'playlist[public_status]', class: "radio radio-accent", checked: @playlist_public==true %>
+        <%= f.label :public_status, 'パブリック', value: 'public' %>
+      </div>
+    </div>
+  </div>
+  <div class="divider px-10 pt-10"></div>
+  <div class="flex justify-center w-full px-10">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>タイトル</th>
+          <th>アーティスト</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="playlist-items" data-playlist-items="<%= @playlist_items.to_json %>">
+        <% @playlist_items.each_with_index do |playlist_item, index| %>
+          <tr class="table-row">
+            <td><%= index+1 %></td>
+            <td><%= playlist_item[0] %></td>
+            <td><%= playlist_item[1] %></td>
+            <td><button type="button" class="btn btn-outline btn-secondary" onclick="moveUp(<%= index %>)" > ↑ </button></td>
+            <td><button type="button" class="btn btn-outline btn-secondary" onclick="moveDown(<%= index %>)"> ↓ </button></td>
+            <td><button type="button" class="btn btn-outline btn-primary" onclick="removeItem(<%= index %>)"><%= " 削除 " %></button></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="divider px-10"></div>
+  <div class="flex justify-center py-10 gap-10">
+    <%= f.hidden_field :playlist_items, id: 'hidden_playlist_items', value: @playlist_items.to_json %>
+    <%= f.hidden_field :current_playlist_items, value: @playlist_items.to_json %>
+    <%= f.submit '保存', class: 'btn btn-primary', onclick:  'syncPlaylistItems()' %>
+    <%= link_to 'キャンセル', playlist_path(@playlist), class: 'btn btn-primary' %>
+  </div>
+<% end %>

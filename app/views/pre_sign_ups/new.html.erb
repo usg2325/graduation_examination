@@ -1,0 +1,16 @@
+<div class="flex flex-col items-center w-full">
+  <h1 class="text-3xl font-bold font-body py-20"><%= '新規登録' %></h1>
+  <p class="font-body pb-5"><%= 'Spotifyに登録しているメールアドレスを入力してください' %></p>
+  <p class="font-body pb-10"><%= 'メールアドレスの登録完了後、登録されたメールアドレス宛に本アプリの新規会員登録用のURLを送信します。' %></p>
+  <%= form_with url: pre_sign_up_path, local: true, class: "w-1/4" do |f| %>
+    <div class="form-group pt-5">
+      <label class="input input-bordered input-secondary flex items-center gap-4 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" /><path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" /></svg>
+        <%= f.email_field :email, class: 'form-control w-full h-full' %>
+      </label>
+    </div>
+    <div class="pt-10 flex justify-center">
+      <%= f.submit '送信', class: 'btn btn-outline btn-accent w-1/2' %>
+    </div>
+  <% end %>
+</div>

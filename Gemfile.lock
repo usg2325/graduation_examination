@@ -94,6 +94,8 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     concurrent-ruby (1.2.3)
+    config (5.5.1)
+      deep_merge (~> 1.2, >= 1.2.1)
     connection_pool (2.4.1)
     crass (1.0.6)
     cssbundling-rails (1.4.0)
@@ -102,6 +104,7 @@ GEM
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    deep_merge (1.2.2)
     dockerfile-rails (1.6.12)
       rails (>= 3.0.0)
     domain_name (0.6.20240107)
@@ -201,8 +204,16 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
+    omniauth-google-oauth2 (1.1.2)
+      jwt (>= 2.0)
+      oauth2 (~> 2.0)
+      omniauth (~> 2.0)
+      omniauth-oauth2 (~> 1.8)
     omniauth-oauth2 (1.8.0)
       oauth2 (>= 1.4, < 3)
+      omniauth (~> 2.0)
+    omniauth-rails_csrf_protection (1.0.2)
+      actionpack (>= 4.2)
       omniauth (~> 2.0)
     pg (1.5.6)
     psych (5.1.2)
@@ -324,6 +335,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
+  config
   cssbundling-rails
   debug
   dockerfile-rails (>= 1.6)
@@ -332,6 +344,9 @@ DEPENDENCIES
   jsbundling-rails
   json
   kaminari
+  omniauth
+  omniauth-google-oauth2
+  omniauth-rails_csrf_protection
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.3, >= 7.1.3.2)

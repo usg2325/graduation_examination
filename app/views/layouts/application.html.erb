@@ -8,12 +8,31 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content="Discover music | トップ" />
+    <meta property="og:description" content="Discover musicは、Spotifyのプレイリストを自動で作成します。" />
+    <meta property="og:url" content="<%= request.url %>" />
+    <meta property="og:image" content="https://i.gyazo.com/95f72291bb98b63c17a2326cb720cca6.png" />
+    <meta property="og:site_name" content="Discover music" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://i.gyazo.com/95f72291bb98b63c17a2326cb720cca6.png" />
+    <meta name="twitter:title" content="Discover music | トップ" />
+    <meta name="twitter:description" content="Discover musicは、Spotifyのプレイリストを自動で作成します。" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
   </head>
 
   <body>
-    <% if !logged_in? %>
+    <% if !logged_in? && (current_page?(root_path) || current_page?(pre_sign_up_path) || current_page?(pre_sign_up_completed_path) || current_page?(login_path) || current_page?(new_password_reset_path)) %>
       <%= render 'shared/before_login_header' %>
-    <% elsif logged_in? && current_page?(guide_spotify_login_path) || logged_in? && current_page?(app_top_path) %>
+    <% elsif !logged_in? && (current_page?(sign_up_path) || current_page?(select_sign_up_path) || current_page?(edit_password_reset_path)) %>
+      <%= render 'shared/sign_up_header' %>
+    <% elsif logged_in? && (current_page?(guide_spotify_login_path) || current_page?(app_top_path)) %>
       <%= render 'shared/after_login_header' %>
     <% else %>
       <%= render 'shared/header' %>

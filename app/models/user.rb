@@ -1,9 +1,11 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  has_many :favorite_artists
-  has_many :favorite_tracks
-  has_many :playlists
+  has_many :favorite_artists, dependent: :destroy
+  has_many :favorite_tracks, dependent: :destroy
+  has_many :playlists, dependent: :destroy
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -11,4 +13,6 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true, presence: true
   validates :name, presence: true, length: { maximum: 255 }
+
+  validates :reset_password_token, uniqueness: true, allow_nil: true
 end

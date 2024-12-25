@@ -29,8 +29,24 @@
         <div class='pt-3' %>
           <%= f.text_field :playlist_name, class: 'form-control input input-bordered input-secondary w-full', placeholder: 'New Playlist', name: 'create_artist[playlist_name]' %>
         </div>
+        <div class="pt-10">
+          <div class="collapse collapse-arrow bg-base-300 ">
+            <input type="checkbox" />
+            <div class="collapse-title font-medium">プレイリスト設定</div>
+              <div class="collapse-content">
+                <div class="px-5">
+                  <%= f.label :プレイリストの曲数, class: "text-sm" %>
+                </div>
+                <div class="flex flex-row text-center px-10 pt-1">
+                  <%= f.text_field :playlist_number, class: 'form-control input input-bordered input-secondary w-1/3', placeholder: '10',  name: 'create_artist[playlist_number]' %>
+                  <div class="flex items-center px-2"><p>曲</p></div>
+                </div>
+              <div class="px-10 py-5 text-sm"><p>※曲数は10〜30の範囲で設定してください</p></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <%= f.submit "プレイリスト作成", class: "btn btn-outline btn-info w-1/2" %>
+      <%= f.submit "プレイリスト作成", class: "btn btn-outline btn-primary w-1/2" %>
     </div>
   </div>
 <% end %>
