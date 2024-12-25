@@ -1,0 +1,2 @@
+module CreatePlaylistArtistsHelper
+end

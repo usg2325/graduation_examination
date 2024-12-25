@@ -1,0 +1,148 @@
+:root {
+  --left-bg-color: rgba(118, 197, 239, 0.7);
+  --left-button-hover-color: rgba(18, 68, 94, 0.3);
+  --right-bg-color: rgba(217, 127, 190, 0.7);
+  --right-button-hover-color: rgba(95, 20, 73, 0.3);
+  --hover-width: 75%;
+  --other-width: 25%;
+  --speed: 1000ms;
+}
+
+
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.h_select {
+  font-size: 1.2rem;
+  color: rgb(246,247,253);
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.button_select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  height: 4rem;
+  width: 20rem;
+  text-align: center;
+  color: rgb(246,247,253);
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  transform: translateX(-50%);
+}
+
+.button_blue {
+  border: solid 0.2rem;
+  border-radius: 25px;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)) padding-box, 
+  linear-gradient(to right, rgba(37, 170, 225, 0.5), rgba(64, 228, 149, 0.5), rgba(48, 221, 138, 0.5), rgba(243, 182, 115, 0.5)) border-box;
+}
+
+
+.button_pink {
+  border: solid 0.2rem;
+  border-radius: 25px;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)) padding-box, 
+  linear-gradient(to right, rgba(237, 110, 160, 0.5), rgba(236, 140, 105, 0.5), rgba(247, 24, 106, 0.5), rgba(251, 176, 59, 0.5)) border-box;
+}
+
+.split.left .button_select:hover {
+  background-color: var(--left-button-hover-color);
+  border-color: var(--left-button-hover-color);
+}
+
+.split.right .button_select:hover {
+  background-color: var(--right-button-hover-color);
+  border-color: var(--right-button-hover-color);
+}
+
+.split {
+  flex: 1;
+  position: absolute;
+  width: 50%;
+  height: 80%;
+  overflow: hidden;
+  transition: var(--speed) all ease-in-out;
+}
+
+.split.left {
+  left: 0;
+  background: url('https://user0514.cdnw.net/shared/img/thumb/INA85_recyoukonndensam_TP_V.jpg') center center no-repeat;
+  background-size: cover;
+}
+
+.split.left:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: var(--left-bg-color);
+}
+
+.split.right {
+  right: 0;
+  background: url('https://user0514.cdnw.net/shared/img/thumb/umedaLightroom_MG_3733_TP_V.jpg') center center no-repeat;
+  background-size: cover;
+}
+
+.split.right:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: var(--right-bg-color);
+}
+
+.hover-left .split.left {
+  width: var(--hover-width);
+}
+
+.hover-left .split.right {
+  width: var(--other-width);
+}
+
+.hover-left .split.right:before {
+  z-index: 2;
+}
+
+.hover-right .split.right {
+  width: var(--hover-width);
+}
+
+.hover-right .split.left {
+  width: var(--other-width);
+}
+
+.hover-right .split.left:before {
+  z-index: 2;
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .button_select {
+    width: 12rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .button_select {
+    top: 70%;
+  }
+}

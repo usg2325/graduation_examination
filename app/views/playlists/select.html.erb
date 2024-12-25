@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="split left">
+    <div class="h_select">
+      <h1><%= 'お気に入りアーティストからプレイリストを作成する' %></h1>
+    </div>
+    <%= link_to "選ぶ", create_playlist_artists_path, class: "button_select button_blue" %>
+  </div>
+  <div class="split right">
+    <div class="h_select">
+      <h1><%= '音楽ジャンルからプレイリストを作成する' %></h1>
+    </div>
+    <%= link_to "選ぶ", create_playlist_genres_path, class: 'button_select button_pink' %>
+  </div>
+</div>

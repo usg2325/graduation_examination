@@ -3,7 +3,7 @@ class FavoriteTracksController < ApplicationController
   before_action :set_favorite_track, only: %i[destroy]
 
   def index
-    @favorite_tracks = FavoriteTrack.where(user: current_user)
+    @favorite_tracks = FavoriteTrack.where(user: current_user).page(params[:page]).per(20)
     @track_ids = @favorite_tracks.map { |fa| fa.track.spotify_id }
   end
 
@@ -22,7 +22,7 @@ class FavoriteTracksController < ApplicationController
       if Artist.exists?(spotify_id: artist_id)
         @artist = Artist.find_by(spotify_id: artist_id)
       else
-        @artsit = Artist.new(name: artist_name, spotify_id: artist_id)
+        @artist = Artist.new(name: artist_name, spotify_id: artist_id)
       end
       # 分析情報を取得
       headers = {
@@ -68,7 +68,7 @@ class FavoriteTracksController < ApplicationController
       query = "track:\"#{track_name}*\" artist:\"#{artist_name}\""
     elsif track_name.present?
       query = "track:\"#{track_name}*\""
-    else
+    elsif artist_name.present?
       query = "artist:\"#{artist_name}\""
     end
 

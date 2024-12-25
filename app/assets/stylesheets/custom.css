@@ -1,0 +1,4 @@
+.dropdown-hover:hover > .bg-change {
+  background-color: rgb(220,184,13); /* ホバー時の背景色を定義 */
+  color: rgb(11,18,46);
+}

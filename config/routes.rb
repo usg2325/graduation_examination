@@ -30,6 +30,13 @@ Rails.application.routes.draw do
 
   get 'favorite_tracks/new'
 
+  get 'playlists/select'
+  resources :playlists, only: %i[show]
+
+  resources :create_playlist_artists, only: %i[index create]
+
+  resources :create_playlist_genres, only: %i[index create]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
