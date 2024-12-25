@@ -27,17 +27,15 @@ class FavoriteArtistsController < ApplicationController
     if FavoriteArtist.exists?(user: current_user, artist: @artist)
       flash[:alert] = 'すでにお気に入りに登録済みです'
       redirect_to favorite_artists_path
-      return
-    end
-
-    @favorite_artist = FavoriteArtist.new(user: current_user, artist: @artist)
-
-    if @favorite_artist.save
-      flash[:success] = 'お気に入りに追加しました'
-      redirect_to favorite_artists_path
     else
-      flash[:danger] = 'お気に入りの登録に失敗しました'
-      render 'new'
+      @favorite_artist = FavoriteArtist.new(user: current_user, artist: @artist)
+      if @favorite_artist.save
+        flash[:success] = 'お気に入りに追加しました'
+        redirect_to favorite_artists_path
+      else
+        flash[:danger] = 'お気に入りの登録に失敗しました'
+        render 'new'
+      end
     end
   end
 

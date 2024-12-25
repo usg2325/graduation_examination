@@ -1,0 +1,21 @@
+<div class="card w-64 bg-secondary shadow-xl">
+  <div class="card-actions justify-end px-2 pt-2">  
+    <%= render 'delete_button', track_id: track_id %>
+  </div>  
+  <figure class="pt-3">
+    <!-- アルバム画像を取得 -->
+    <% tracks = RSpotify::Track.find(track_id) %>
+    <% if tracks.album.images.present? %>
+      <% image = tracks.album.images.first %>
+      <img src="<%= image['url'] %>?size=300x300" alt="Tracks Artwork" class="rounded-xl" style="width: 200px; height: 200px;" />
+    <% else %>
+      <img src="<%= image_path('20200501_noimage.png') %>" alt="Tracks Artwork" class="rounded-xl" style="width: 200px; height: 200px;" />
+    <% end %>
+  </figure>
+  <div class="card-body items-center text-center">
+    <h2 class="card-title">  
+      <%= Track.find_by(spotify_id: track_id).name %>
+    </h2>
+    <p><%= Artist.find_by(id: Track.find_by(spotify_id: track_id).artist).name %></p>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="flex justify-center">
+  <div class="overflow-y-scroll border border-gray-200 p-4 w-4/5 h-[40vh] pt-0">
+    <table class="table table-pin-rows">
+      <thead>
+        <tr>
+          <th></th>
+          <th>アーティスト名</th>
+          <th>トップトラック</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @artists.present? %>
+          <% @artists.each do |artist| %>
+            <tr class="table-row cursor-pointer hover:bg-base-300">
+              <td class="radio border-none">
+                <%= f.radio_button :artist_id, artist.id, name: 'favorite_artist[artist_id]', class: "radio radio-accent", data: { artist_name: artist.name } %>
+              </td>
+              <td class="artist-name"><%= "#{artist.name}" %></td>
+              <td class="artist_toptrack">
+                <% if @top_tracks.present? && @top_tracks[artist.id].present? %>
+                  <%= "#{@top_tracks[artist.id].name}" %>
+                <% else %>
+                  <%= "トップトラックが見つかりませんでした" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

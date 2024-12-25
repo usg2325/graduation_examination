@@ -1,0 +1,19 @@
+<button class="btn btn-square btn-sm" onclick="document.getElementById('delete_confirmation_<%= artist_id %>').showModal()">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+</button>
+
+<!-- ダイアログ表示 -->
+<dialog id="delete_confirmation_<%= artist_id %>" class="modal">
+  <div class="modal-box">
+    <p class="text-center">
+      <%= "#{Artist.find_by(spotify_id: artist_id).name}をお気に入りから削除しますか?" %>
+    </p>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">キャンセル</button>
+      </form>
+      <% favorite_artist = FavoriteArtist.find_by(artist: Artist.find_by(spotify_id: artist_id), user: current_user) %>
+      <%= button_to "削除する", favorite_artist_path(favorite_artist), method: :delete, class: "btn btn-warning" %>
+    </div>
+  </div>
+</dialog>

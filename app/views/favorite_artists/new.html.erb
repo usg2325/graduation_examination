@@ -5,50 +5,10 @@
   </div>
 </div>
 
-<div class="flex justify-center py-6">
-  <div class="join w-full">
-    <%= form_with url: search_favorite_artists_path, method: :get, class: "w-full flex justify-center" do |f| %>
-      <%= f.text_field :artist_name, class: "input input-bordered input-secondary w-1/4 join-item", placeholder: "アーティスト名" %>
-      <%= f.submit "検索", class: "btn join-item bg-accent text-indigo-950 hover:bg-secondary rounded-r-full" %>
-    <% end %>
-  </div>
-</div>
-
+<%= render "search_form" %>
 
 <%= form_with url: favorite_artists_path, method: :post do |f| %>
-  <div class="flex justify-center">
-    <div class="overflow-y-scroll border border-gray-200 p-4 w-4/5 h-[40vh] pt-0">
-      <table class="table table-pin-rows">
-        <thead>
-          <tr>
-            <th></th>
-            <th>アーティスト名</th>
-            <th>トップトラック</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if @artists.present? %>
-            <% @artists.each do |artist| %>
-              <tr class="table-row cursor-pointer hover:bg-base-300">
-                <td class="radio border-none">
-                <%= f.radio_button :artist_id, artist.id, name: 'favorite_artist[artist_id]', class: "radio radio-accent", data: { artist_name: artist.name } %>
-                </td>
-                <% a= Rails.logger.debug "Artist Name: #{artist.name}" %>
-                <td class="artist-name"><%= "#{artist.name}" %></td>
-                <td class="artist_toptrack">
-                  <% if @top_tracks.present? && @top_tracks[artist.id].present? %>
-                    <%= "#{@top_tracks[artist.id].name}" %>
-                  <% else %>
-                    <%= "トップトラックが見つかりませんでした" %>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <%= render "artist_table", f: f %>
   <%= f.hidden_field :artist_name, value: "" , name: "favorite_artist[artist_name]" %> 
   <div class="flex justify-end pt-10 px-40">
     <%= f.submit "登録",  class: "btn btn-lg btn-active btn-accent text-indigo-950 hover:bg-base-100 hover:text-accent rounded-full px-10" %>

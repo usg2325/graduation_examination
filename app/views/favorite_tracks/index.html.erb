@@ -1,0 +1,13 @@
+<div class="flex justify-between w-full py-20 px-20">
+    <h1 class="text-4xl font-bold font-body"><%= '楽曲一覧' %></h1>
+    <%= link_to "お気に入り登録", favorite_tracks_new_path, class: "btn btn-lg btn-outline btn-accent rounded-full" %>
+</div>
+
+<!-- 楽曲表示 -->
+<div class="flex justify-center">
+  <div class="grid grid-cols-4 gap-10">
+    <% @track_ids.each do |track_id| %>
+      <%= render 'track_card', track_id: track_id %>
+    <% end %>
+  </div>
+</div>
