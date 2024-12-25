@@ -70,3 +70,13 @@ group :test do
 end
 
 gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem 'sorcery'
+
+gem 'rest-client'
+
+gem 'json'
+
+gem 'dotenv-rails'
+
+gem 'rspotify'

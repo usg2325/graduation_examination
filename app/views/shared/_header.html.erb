@@ -1,0 +1,37 @@
+<header>
+  <div class="navbar bg-base-300 pb-0 pr-0">
+    <div class="flex justify-between w-full h-1/6">  
+      <div class="w-1/6 py-5 px-3">
+        <%= link_to 'Discover music', app_top_path, role:"button", class:"btn btn-ghost text-xl" %>
+      </div>
+      <div class="flex flex-col w-1/4">
+        <div class="flex justify-between items-center w-full">
+          <h1><%= "#{current_user.name}" %></h1>
+          <div class=" px-4">
+            <%= link_to 'ログアウト', logout_path, method: :delete, class: "btn btn-outline btn-accent text-xs", data: { turbo_method: :delete }  %>
+          </div>
+        </div> 
+        <div class="flex flex-row">
+          <div class="justify-end w-full">
+            <div class="dropdown dropdown-hover pt-4 w-full">
+              <div tabindex="0" role="button" class="btn btn-ghost bg-change w-full">プレイリスト</div>
+                <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-full">
+                  <li><%= link_to '新規作成', "#" %></li>
+                  <li><%= link_to '一覧', "#" %></li>
+                </ul>
+              </div>
+            </div>
+            <div class="dropdown dropdown-hover pt-4 w-full">
+              <div tabindex="0" role="button" class="btn btn-ghost bg-change w-full">お気に入り</div>
+                <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-full">
+                  <li><%= link_to 'アーティスト', "#" %></li>
+                  <li><%= link_to '楽曲', "#" %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
