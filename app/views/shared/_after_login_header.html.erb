@@ -1,0 +1,15 @@
+<header>
+  <div class="navbar bg-base-300">
+    <div class="flex justify-between w-full h-1/6">
+      <div class="w-1/6 py-5 px-3">
+        <%= link_to 'Discover music', "#", role:"button", class:"btn btn-ghost text-xl" %>
+      </div>
+      <div class="flex justify-between items-center w-1/4">
+        <h1><%= "ユーザー名" %><h1>
+        <div class=" px-4">
+        <%= link_to "ログアウト", "#", role: "button", class: "btn btn-outline btn-primary text-xs", data: { turbo_method: :delete } %>
+        </div>
+      </div> 
+    </div>
+  </div> 
+</header>
