@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'user_sessions/new'
-  get 'users/new'
+  
   root 'top_pages#top'
 
   resources :users
@@ -14,6 +13,14 @@ Rails.application.routes.draw do
 
   get '/spotify_login', to: 'spotify#login'
   get '/spotify_callback', to: 'spotify#callback'
+
+  resources :favorite_artists, only: %i[index create destroy] do
+    collection do
+      get :search
+    end
+  end
+
+  get 'favorite_artists/new'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

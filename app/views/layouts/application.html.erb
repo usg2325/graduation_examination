@@ -11,10 +11,12 @@
   </head>
 
   <body>
-    <% if logged_in? %>
+    <% if !logged_in? %>
+      <%= render 'shared/before_login_header' %>
+    <% elsif logged_in? && current_page?(guide_spotify_login_path) || logged_in? && current_page?(app_top_path) %>
       <%= render 'shared/after_login_header' %>
     <% else %>
-      <%= render 'shared/before_login_header' %>
+      <%= render 'shared/header' %>
     <% end %>
     <%= render 'shared/flash_message' %>
     <%= yield %>

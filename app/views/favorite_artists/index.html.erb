@@ -1,0 +1,48 @@
+<div class="flex justify-between w-full py-20 px-20">
+    <h1 class="text-4xl font-bold font-body"><%= 'アーティスト一覧' %></h1>
+    <%= link_to "お気に入り登録", favorite_artists_new_path, class: "btn btn-lg btn-outline btn-accent rounded-full" %>
+</div>
+
+<!-- アーティスト表示 -->
+<div class="flex justify-center">
+  <div class="grid grid-cols-3 gap-10">
+    <% @artist_ids.each do |artist_id| %>
+      
+      <div class="card w-96 bg-secondary shadow-xl">
+        <div class="card-actions justify-end px-2 pt-2">
+          <button class="btn btn-square btn-sm" onclick="document.getElementById('delete_confirmation_<%= artist_id %>').showModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+          <dialog id="delete_confirmation_<%= artist_id %>" class="modal">
+            <div class="modal-box">
+              <p class="text-center">
+                <%= "#{Artist.find_by(spotify_id: artist_id).name}をお気に入りから削除しますか?" %>
+              </p>
+              <div class="modal-action">
+                <form method="dialog">
+                  <button class="btn">キャンセル</button>
+                </form>
+                <% favorite_artist = FavoriteArtist.find_by(artist: Artist.find_by(spotify_id: artist_id), user: current_user) %>
+                <%= button_to "削除する", favorite_artist_path(favorite_artist), method: :delete, class: "btn btn-warning" %>
+              </div>
+            </div>
+          </dialog>
+        </div>  
+          <figure class="px-10 pt-3">
+          <% artists = RSpotify::Artist.find(artist_id) %>
+          <% if artists.images.present? %>
+            <% image = artists.images.first %>
+            <img src="<%= image['url'] %>?size=320x320" alt="Artists Artwork" class="rounded-xl" style="width: 300px; height: 300px;" />
+          <% else %>
+            <img src="<%= image_path('20200501_noimage.png') %>" alt="Artists Artwork" class="rounded-xl" style="width: 300px; height: 300px;" />
+          <% end %>
+        </figure>
+        <div class="card-body items-center text-center">
+          <h2 class="card-title">
+            <%= Artist.find_by(spotify_id: artist_id).name %>
+          </h2>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
