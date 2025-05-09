@@ -1,67 +1,77 @@
-# プレイリスト自動作成アプリ
+# Discover music
+
+[![Image from Gyazo](https://i.gyazo.com/95f72291bb98b63c17a2326cb720cca6.png)](https://gyazo.com/95f72291bb98b63c17a2326cb720cca6)
 
 ## サービス概要
-Spotifyのプレイリストを自動で作成するサービスです。<br>
-ユーザーにお気に入りの曲やアーティストを登録してもらい、それを基にユーザーの好みに合わせたプレイリストを作成します。<br>
-作成されたプレイリストにはお気に入りとして登録された曲や、アーティストの曲が含まれないようにし、新しい音楽の発見を促します。
+『Discover music』は、Spotifyのプレイリストを自動で作成することができるサービスです。<br>
+ユーザーが登録した『お気に入り楽曲』のデータをもとに、『音楽ジャンル』または『お気に入りアーティスト』のどちらかを選択してプレイリストを作成することができます。<br>
+作成されるプレイリストには、ユーザーのお気に入りとして登録された楽曲やアーティストの曲が含まれないようにし、新しい音楽との出会いを手助けします。
+
+## サービスURL
+https://discover-music.fly.dev/
 
 ## このサービスへの思い・作りたい理由
-ストリーミングサービスによって数多くの曲を手軽に聴くことができるようになっていますが、つい同じアーティストの曲やお気に入りの曲ばかりを聴いてしまい、マンネリ化してしまうことがあります。<br>
-そこで、新しい音楽の発見の手助けになるようなサービスを作成したいと考えました。
+ストリーミングサービスの普及によって数多くの楽曲を手軽に楽しめるようになっていますが、新しいものを探すことにハードルを感じ、つい同じアーティストやお気に入りの曲ばかりを聴いてしまう人もいるのではないかと思います。<br>
+そこで、新たな音楽との出会いの手助けになるようなサービスを作成したいと考えました。
 
 ## ユーザー層について
 - 自分の好みを基に新しい音楽を発見したい人<br>
-（理由）たくさんの曲を聴ける環境にあるが、なかなか新しいものに手を出せない人がいると考えるから
+  - 理由：たくさんの曲を聴ける環境があるにもかかわらず、なかなか新しいものに手を出せない人がいると考えるため
 
 ## サービスの利用イメージ
-ユーザーが普段聴かないアーティストの曲を自分で探すことなく手軽に聴くことができ、気軽に自分の知らないアーティストの発掘をすることができます。
+ユーザーが普段聴かないアーティストの楽曲を自分で探す手間なく手軽に聴くことができ、気軽に自分の知らないアーティストの発掘をすることができます。
 
 ## ユーザーの獲得について
 WEBアプリから作成したプレイリストをSNSへシェアする機能を付け、投稿にプレイリストのURLと一緒にWEBアプリのURLつけて誘導できるようにする
 
-## サービスの差別化ポイント・推しポイント
-- メイド・フォー・ユー<br>
-  （主にユーザーの再生履歴を基にSpotifyがプレイリストを自動作成する機能）<br>
-  この機能で作成されたプレイリストには、よく聴く曲やアーティストも含まれています。しかし、本アプリでは、ユーザーがよく聴く曲やアーティストをお気に入りとして登録すると、それらが含まれないプレイリストを作成することで差別化を図ります。
-- スマートシャッフル<br>
-  （既存のプレイリストの雰囲気に合う楽曲をAIがレコメンドし、元々プレイリストに入っている曲と共にシャッフルして再生する機能）<br>
-  既存のお気に入り楽曲を含まずに、お気に入り楽曲と似た傾向のある楽曲のみでプレイリストを構成することで、効率よく、より多くの新しい楽曲を聴くことができる点や、音楽ジャンルを選択してプレイリストを作成する機能を搭載することで、普段聴くお気に入りの音楽と似た傾向のある別ジャンルの音楽を楽しむことができる点で差別化を図ります。
+## サービスの差別化ポイント
 
-## 機能候補
-### MVPリリースまでに作っていたいもの
-- ユーザー登録機能
-- ログイン機能
-- お気に入り登録機能（曲・アーティスト）
-- プレイリスト作成機能
-  - お気に入りに登録したアーティストから作成
-  - 音楽ジャンルを選択して作成
+| サービス名 | サービス概要 | サービスの差別化ポイント |
+| ------ | -------------- | --------------- |
+| メイド・フォー・ユー | 主にユーザーの再生履歴を基にSpotifyがプレイリストを自動作成する機能 | この機能で作成されたプレイリストには、よく聴く曲やアーティストも含まれています。しかし、本アプリでは、ユーザーがよく聴く曲やアーティストをお気に入りとして登録すると、それらが含まれないプレイリストを作成することで差別化を図ります。|
+| スマートシャッフル | 既存のプレイリストの雰囲気に合う楽曲をAIがレコメンドし、元々プレイリストに入っている曲と共にシャッフルして再生する機能 | 既存のお気に入り楽曲を含まずに、お気に入り楽曲と似た傾向のある楽曲のみでプレイリストを構成することで、効率よく、より多くの新しい楽曲を聴くことができる点や、音楽ジャンルを選択してプレイリストを作成する機能を搭載することで、普段聴くお気に入りの音楽と似た傾向のある別ジャンルの音楽を楽しむことができる点で差別化を図ります。|
 
-### 本リリースまでに作っていたいもの
-- プレイリスト作成の際の詳細設定機能（プレイリストの長さ等）
-- プレイリスト作成履歴の確認機能
-- 作成したプレイリストの削除機能
-- プレイリストのシェア機能
-- プレイリスト編集機能
-  - 曲の並び替え
-  - 曲の削除
-- プレイリスト再生機能
+## 機能紹介
 
-## 機能の実装方針予定
-- Spotify APIを使用して、ユーザーのプレイリストを自動的に作成する
-- Get Recommendationsエンドポイントを使用
-- お気に入りに登録したアーティストのうちいくつかをseed_artistsとして設定、または、音楽ジャンル選択しをseed_genresに設定して、お気に入りとして登録した楽曲のenergy、tempo、keyの値と近い曲を取得し、取得した曲の中からランダムに選択し、プレイリストに追加する。
+|ユーザー登録/ログイン機能 |
+| --------------- |
+| ![Image](https://github.com/user-attachments/assets/5a05c15a-433a-47a7-8ecc-2dbf69e0e45d) |
+|『ユーザー名』『メールアドレス』『パスワード』『確認用パスワード』を入力してユーザー登録を行います。<br>また、Googleアカウントを使用してGoogleログインを行うことも可能です。<br>ログインの際は、spotifyアカウントへのログインも必要となります。|
 
-## 使用予定の技術スタック
-- バックエンド
-  - Ruby
-  - Ruby on Rails
-- フロントエンド
-  - Javascript
-- データベース
-  - PostgreSQL
+| お気に入り登録機能（楽曲/アーティスト）　|
+| ------------------------- |
+|　![Image](https://github.com/user-attachments/assets/6f578ae8-592c-40bc-9d17-9fc113183f75) |
+| 『お気に入り楽曲』『お気に入りアーティスト』の登録を行います。<br>検索バーに楽曲名やアーティスト名を入力して検索し、検索結果から一つ選択して登録を行うことができます。 |
+
+| プレイリスト作成機能（アーティストから/音楽ジャンルから） |
+| --------------- |
+|　![Image](https://github.com/user-attachments/assets/41cd83cb-77a2-42f1-b3ba-ec366fd7d479)　|
+| 『お気に入り楽曲』を5曲以上登録するとプレイリストの作成を行うことができます。なお、『お気に入りアーティストからプレイリストを作成する』を選択した場合は『お気に入りアーティスト』を1組以上登録する必要があります。<br>プレイリストを作成する際は、プレイリスト名とプレイリストの曲数（10曲〜30曲）を設定することができます。|
+
+| プレイリスト一覧確認機能 |
+| -------------------- |
+|　![Image](https://github.com/user-attachments/assets/f188b913-31bb-4383-8c6e-fb6e73f507b5) |
+| 作成したプレイリストを一覧で確認することができます。<br>プレイリスト名を選択し詳細画面に遷移すると、プレビューからプレイリストを試聴することや、X（旧Twitter）へのシェアなどを行うことができます。|
+
+| プレイリスト編集機能 |
+| ---------------- |
+|　![Image](https://github.com/user-attachments/assets/77ca1c40-2cd7-4e93-a3cd-2cdebb06239d)　|
+|『プレイリスト名変更』『楽曲の並び順変更』『公開状況切り替え』『楽曲の削除』を行うことができます。<br>プレイリストの公開状況を『パブリック』へ切り替えると、X（旧Twitter）へプレイリストをシェアすることができるようになります。 |
+
+ 
+## 使用技術
+
+| カテゴリ | 技術内容 |
+| ------ | ------- |
+| サーバーサイド | Ruby on Rails 7.1.3・Ruby 3.2.2 |
+| フロントエンド | Ruby on Rails・Javascript |
+| CSSフレームワーク | Tailwindcss + daisyUI |
+| Web API | Spotify API・Google API |
+| データベースサーバー | PostgreSQL |
+| アプリケーションサーバー | Fly.io |
 
 ## 画面遷移図
-https://www.figma.com/file/6KLOYNVmarGYnqAgJkGUS3/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=ccanzEyMWuEnt5yd-1
+https://www.figma.com/design/6KLOYNVmarGYnqAgJkGUS3/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=Gs1WD36MGdpgfaVI-1
 
 ## ER図
-https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=ER%E5%9B%B3.drawio#R7Z1bc5u6Fsc%2Fy37IzN4PdAwYXx6TtGnPaTs7O2mn7XnpKEa22cGICvnWT38kbrYRdlBiA%2FHSTGYCkiyw1l%2FoZ60lcWFfz1bvKQqnn4mL%2FQur464u7LcXlmWaQ5v%2FEynrJKXf7yQJE%2Bq5aaFNwr33G6eJWbG55%2BJopyAjxGdeuJs4IkGAR2wnDVFKlrvFxsTfvWqIJlhKuB8hX0795rlsmqQOrP4m%2FQP2JtPsymZvmOTMUFY4%2FSbRFLlkuZVkv7uwrykhLDmara6xLxova5fkczd7cvMbozhgVT4Q%2Fv3d%2Fd%2B3H5dff%2BHrR%2Bff2%2FlqcGdYSS0L5M%2FTL%2FyFotFjlN4yW2ftwO8%2BFIcMPYikq4ghylJz2R2ewA3AkBdgyhPM%2BNz3URh5cfEkZer57ie0JnOWVZSdXY29FXbvEmuJstxwn3hl4lRUPuaV36c3I7KR700Cfjzi311c8YriiN%2FLJxSxtMSUzfz0UG6otO0WmDK82kpKG%2B49JjPM6JoXSXMHqQ1TEXft9Hy5kYTVS9OmW3KwumkiSmU4yaveWIofpMZSMJwtGe6wye6E9K6mhHq%2FhaH8tGG3zRifL72ZjwKuaeQWkq5I3Idjc3i%2Bf018ImwdkABL5haFXErCL4hOMEsTQuIFLG4H54r%2F8Za57rxxLhx%2Br9f83Nyc8z9RnLJrEkSMclmJOjC37hILC18xEqaV%2Bnic1U%2FTdhfHD4QxMtsrgIN94WlVpDKoqgL7VCLoSiK4%2FbhXBvz7Mw%2F5d%2FwpiYKJnxgtfmiijdFKLFva1nn7Fhu%2B2FMJb86xHz%2F3pp7rYt5rr5ZTj%2BH7EI1EoSUfN57qrwd7wNPm2rKPrWietLJNoynXhnz%2BhAoQ4%2F1nHriRZPP8Pp8vA0eSAS%2FerAyyB3RS9irixvaCyafkk72CTpyW6GS1t1ubzlF1U6m64wpnsvhw9%2B3y448Ruf%2Fn62%2F%2FMXIvPxqWrJwLq%2BenFgt2BNT7NRekIh70QhaXPJNOHv4UT3F%2BmP37K7ZLR1jXGKOZ56%2BToh%2Bwv8DMG6Gt%2FCgedkSuaYWr7YzkoiInIHQmBqs8b4Goh%2Fh%2Fri%2FE5lQQwsFyIxSWFPEx441rpLKU8wkNpyhIP2glaVw9zEh1fRnXEUs7y%2FECN9ahyOpkXyfO4QNYEI157dl14v6UKCImnq2LLAl1d28rr8tY4odHj1cn6uSjInnERqqpnXJxr4nrKGnDBw53EyoEZRQMaTlmYsPtg8ycPkGsePeuF4U%2BSu3rBT7HNX7whzcTAzcKkrbJVMOPJuI%2FH8nxhBNbqjKu2kRoSe5remh12vXQMgfyU2tw1IdWldpqGOx6GnwrgW%2FnhODbaxp8%2B9VFUM%2BjA7teVt9pqbdX2VbnTr0DSQMBmuG2DyFtUAY8zpUHDf50FYil1aIBo9AyQw0YjQPGsGnAyNwPAAljWNlY504YpimJIAoJ88brn%2B2fYGuDQOCBhvzDBDpoKKsFDGgMBhos6gYL02qaLAYyX9407bSrjS0yyWu4MIYyYQpbRww0WygIBB5cyDNeuTtF60XjRXFsNDVe1I4XTtN4AWeeQiGK79xZwpKjAXGA6WQNd2BQj%2FGEAxK2jJ5JhIdWi8YIqWm6GiNqx4gScdWMEQ4YjOhWts7ZY4TsJn%2FEkBmiujTgMYTsGwM%2FGaGuFzAUMdg%2FnmiKOBFF5Gsom%2FN19KBQRKZvTRHGQPaBMzwLCdxxQUEc8DjCktQCfC5CXS1gKKIkvOYy9pnq9eq7isgXqB9asN4tMWoeH3H8GQXZe6mR8KUr1vuVhXFgyXqZDk43sSSHvwBas27p%2BJd8haPshGh%2F4Et9q9YVlAKOGbsyMz65bF0vRa5PiWU8qjrvcFiJVWqr4xkmT4JqpnnpNJcy05StRq6VaUp%2Bwzb8%2BKht3svWQTh5U8hBOLAXJCtoAx7CyGKBvlBIXS5wOEPe6E1zRu2cUbYouV7OKNuuCwhn6CidvClKNrPQq5JVFAKPNuTxAzxtHCVW5yxpIxvTtleoogVnCYZ%2FIu1uq%2BBus8rid%2Bt1t3X11NTR3W15x3g97raSqXJA7raunp3Km0KecGg%2FLdbnblNQCjh6tMt2RNPuttYoEQyY9vaHE4NGGIVZL3WEady71pOD%2Fm4%2B7t%2Fb4Mwmvnp6w9%2B8KeQIwnmEKehZLwV5gOOWknkM8EvU1PUChi66CpvKa9w4FW407mTryqPMzUcwfrZuda%2FoueNGV%2F7ZqzfoUxEIPODQa%2BKPoBcwwOHIU7Jf%2Be8Z7Vzb1UPx3atVXWuDUxGCo6Oxju5ay%2FvC63GtOXI0FiDXmqMDsvKmkAOy2k%2BI9bnWFJQCjhjNskXR2rXWGiXCYVE9%2BXX0yS91pmnc1%2BYobNJwZjNfjp75yptCnvmCvZJNQRvwEEYWC%2FTYcnW5gOGM7DY0ZzTJGY072XoK0elnxhl5D9Cc0bMkFeAZ8ny4I4eCOMCBhiUPHdBBQ10ucEBDdq5p0KgdNEpft1kvaSg4686NNKqb6%2BxJQ%2FbVjeg6ZNj9GaIoWhLqAh5FqusEHnSUvAIeOnQoy%2BUcoQP1pg9%2FL5bf5%2BP%2Fdrpf3A%2B%2FbiPH0G%2FcbAAxyl65eSrEKLX6OQLFIXnD4onSlijZvY1fFcSY8EJlnDNBlDYN6K13jiOWc%2BSHcrSSfWn5zjt8CB496tjgg7HBLdh3p68dXEcPDs67xesJDu7LvxsBBQfnnQAUKZY3hezj0sHBz1LKOZNj%2BdxTiXRex3Ky%2BkJ61fUDBib72gN29OkpdRJpPKS3L%2F8ABbR9Tl%2F7wPKmkH1g4LfPUZAHPPwo2THydeBHm%2FQCBzfkVZAaN2rHjcYje%2Ftlu%2FWdo4fscCfQuNGXl5LFU9iweUNv17efN%2BQfKpo39HZ9%2B5rG7Mgjza2P1r5%2BP8WT76dofg8ds6NfB390P9mmS7weR5nZkX3egDxlm36gidE0Zd95%2B2GxPl%2BZilbA0WPJ23ef3ElnlAjjkmfSycOf4nnOD7N%2Ff8WW6Qj7GmM08%2Fx1UvQD9heYeSO0lR%2FFA5DINa1wtZ2RXFTkBITOxLCV5y0Q9RD%2FzxWG2JwKWjhYbsSHJ7mIjxlvXCMVppxPaDhFQfpBK0nj6mFGquzLuI5Y3FmOF7ixEkVWJ%2Fs6cQ4fyoJozGvPrhP3qEQRMf1sXUQsqti9rbwuY4kfHj1enaiTj4%2FkERuppnbKxf0mrqOkDR%2F4j8kJFYIyCoa0HDOx4fZBZk6fIFa8e9eLQo6OSbIX%2BBzd%2BMEf3kwM4ShI2kbvulTbYwvOj5gsDk1T77MnSZ9BvY07Zc2SdUU3TVNvbbOkueo19PK2sCQlgHfLqggEHunqedJjCAYOY5j6VbBtgI7GXbOmKQ81YJDDrD5pfvbIYcpzJbD3d1RRBzzekOMGAa1gPJZeAOGGfj1GG3Cj%2Ba2XTFN%2BcsDhDf1%2BjE1byKGhUUiYN17DnuVQ0Ag86ijRDHjq0O%2Bv2Ns22WoFDRm1Qkadmy%2FtMXwXDFNYejHbpi1ktnT5FQGPDgrqgEcTcqywVotmiX1tI7PnexyIAK2DiHEBPazcqbr90vB0NKDfY3b8sHKr%2BiqU1oSVW%2FL6Akhh5ZZ%2Bm9mmLeQVBu2fdqoxrFxBK%2BDAsVu2ql2%2FoLU9UoRDpdk1NdocccpLHW2ajx224b48bdMJNNeYtiXpAHgYj4I64JGM%2FMsYvENNXS%2FniBvRyrhf%2FuvfhV3aWd%2F8uvvPz9A0qsRuYHeCMzDkI%2FeUTEiA%2FHeb1AQdE9QwrV0b4cC9pDQ267u7RDg86cbzdzhlU%2BQ3puQL%2BYyCdTwRxr83dvOq%2BHf9no1F4uSHOHnjZKdvV9uZbzOmwSuPfd863voUP9t8SJxknxnN6QJnnCTrLNtYkczpCB%2BQXraRGMtoaV9BJ3VvibauOtyZnRIN5YkU%2B4h5C7xzwwd0eisYbtMDjMKkn1mczEu%2Be%2FqpjTClivq79RSrSVpGqoYLAq23iqWEufd2u7tXsR3n4E0Vig92SvOD5PLH7WkVNk47Xk%2Fb6UYHO1zSJ1vS0%2BJ727rX5%2Fe8qh0v23qnNR2v8K6DXvEVBlX7XaEeu7jHy2k6Xrev1PHsWnpeBWfBds%2FD%2FgNZNjC8PaPzPL9%2F9Nqme9sqSKNYRVXhFysa2icRvt3bvYyVXva0Uq6wnRI4Kech0O3RslnQcueZD%2FGilvvDSlo%2Bmtxkl0or5ZbhitF50zHzlER1g6eYRZzdYurxxor999sgY9Yi4MGgIqxk3s7WCL1IGf3iT9iqQrcKQu8Oqyn9pU9tx%2Bwcvq9hoXyvhqd8vsr51N2uTb8SrF7%2FYPcSJ8VueryfC1bVLpjNr7WmC9oFpO6Zz%2BSmun4xFLtgt%2FOiLsVPKRFu2E1xisLpZ%2BJiUeL%2F
+![Image](https://github.com/user-attachments/assets/8c54a94b-9dc9-4276-b8d3-60dfc1b8743b)
